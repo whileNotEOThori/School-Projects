@@ -17,6 +17,8 @@ int main()
     p.setY(3);
 
     p.printPiece();
+
+    
 }
 
 /*string type = "rook";
