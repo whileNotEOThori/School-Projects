@@ -7,6 +7,16 @@ using namespace std;
 int main()
 {
     cout << "Hello World" << endl;
+    piece p("King", 'w', 2, 2);
+    piece l(p);
+
+    p.printPiece();
+    l.printPiece();
+
+    p.setX(3);
+    p.setY(3);
+
+    p.printPiece();
 }
 
 /*string type = "rook";

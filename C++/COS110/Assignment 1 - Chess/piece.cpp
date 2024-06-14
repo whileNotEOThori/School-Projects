@@ -57,6 +57,7 @@ void piece::printPiece()
     cout << this->side << " " << this->getPiece() << " at " << "[" << this->xPos << "," << this->yPos << "]" << endl;
 }
 
+// helper function
 string piece::getPiece()
 {
     return pieceType;
