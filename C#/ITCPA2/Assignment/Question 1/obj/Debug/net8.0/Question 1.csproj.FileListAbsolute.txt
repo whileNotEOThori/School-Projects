@@ -12,3 +12,18 @@ C:\Users\THORISO\OneDrive - Eduvos\2024\Block 2\ITCPA2\Formative Assessments\Ass
 C:\Users\THORISO\OneDrive - Eduvos\2024\Block 2\ITCPA2\Formative Assessments\Assignment\Question 1\obj\Debug\net8.0\Question 1.pdb
 C:\Users\THORISO\OneDrive - Eduvos\2024\Block 2\ITCPA2\Formative Assessments\Assignment\Question 1\obj\Debug\net8.0\Question 1.genruntimeconfig.cache
 C:\Users\THORISO\OneDrive - Eduvos\2024\Block 2\ITCPA2\Formative Assessments\Assignment\Question 1\obj\Debug\net8.0\ref\Question 1.dll
+C:\Users\THORISO\OneDrive - Eduvos\GitHub Projects\School-Projects\C#\ITCPA2\Assignment\Question 1\bin\Debug\net8.0\Question 1.exe
+C:\Users\THORISO\OneDrive - Eduvos\GitHub Projects\School-Projects\C#\ITCPA2\Assignment\Question 1\bin\Debug\net8.0\Question 1.deps.json
+C:\Users\THORISO\OneDrive - Eduvos\GitHub Projects\School-Projects\C#\ITCPA2\Assignment\Question 1\bin\Debug\net8.0\Question 1.runtimeconfig.json
+C:\Users\THORISO\OneDrive - Eduvos\GitHub Projects\School-Projects\C#\ITCPA2\Assignment\Question 1\bin\Debug\net8.0\Question 1.dll
+C:\Users\THORISO\OneDrive - Eduvos\GitHub Projects\School-Projects\C#\ITCPA2\Assignment\Question 1\bin\Debug\net8.0\Question 1.pdb
+C:\Users\THORISO\OneDrive - Eduvos\GitHub Projects\School-Projects\C#\ITCPA2\Assignment\Question 1\obj\Debug\net8.0\Question 1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\THORISO\OneDrive - Eduvos\GitHub Projects\School-Projects\C#\ITCPA2\Assignment\Question 1\obj\Debug\net8.0\Question 1.AssemblyInfoInputs.cache
+C:\Users\THORISO\OneDrive - Eduvos\GitHub Projects\School-Projects\C#\ITCPA2\Assignment\Question 1\obj\Debug\net8.0\Question 1.AssemblyInfo.cs
+C:\Users\THORISO\OneDrive - Eduvos\GitHub Projects\School-Projects\C#\ITCPA2\Assignment\Question 1\obj\Debug\net8.0\Question 1.csproj.CoreCompileInputs.cache
+C:\Users\THORISO\OneDrive - Eduvos\GitHub Projects\School-Projects\C#\ITCPA2\Assignment\Question 1\obj\Debug\net8.0\Question 1.sourcelink.json
+C:\Users\THORISO\OneDrive - Eduvos\GitHub Projects\School-Projects\C#\ITCPA2\Assignment\Question 1\obj\Debug\net8.0\Question 1.dll
+C:\Users\THORISO\OneDrive - Eduvos\GitHub Projects\School-Projects\C#\ITCPA2\Assignment\Question 1\obj\Debug\net8.0\refint\Question 1.dll
+C:\Users\THORISO\OneDrive - Eduvos\GitHub Projects\School-Projects\C#\ITCPA2\Assignment\Question 1\obj\Debug\net8.0\Question 1.pdb
+C:\Users\THORISO\OneDrive - Eduvos\GitHub Projects\School-Projects\C#\ITCPA2\Assignment\Question 1\obj\Debug\net8.0\Question 1.genruntimeconfig.cache
+C:\Users\THORISO\OneDrive - Eduvos\GitHub Projects\School-Projects\C#\ITCPA2\Assignment\Question 1\obj\Debug\net8.0\ref\Question 1.dll

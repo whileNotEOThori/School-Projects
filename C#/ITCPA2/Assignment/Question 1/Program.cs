@@ -13,8 +13,8 @@ internal class Program
     private static void Main(string[] args)
     {
         //Prompt user for data
-        int numSections = GetNumSections();
-        int readingsPerSection = GetNumReadings();
+        uint numSections = GetNumSections();
+        uint readingsPerSection = GetNumReadings();
 
         // Local variable declarations
         double[,] temperatures = new double[numSections, readingsPerSection];
@@ -30,84 +30,71 @@ internal class Program
         PerformAnalysis(temperatures, ref avgTemp, ref sectionAvgTemp, ref sectionMaxTemp, ref sectionMinTemp, numSections, readingsPerSection);
 
         DisplayAnalysis(avgTemp, sectionAvgTemp, sectionMaxTemp, sectionMinTemp, numSections);
+
     }
 
     //Prompt the user to enter the number of sections 
-    static int GetNumSections()
+    static uint GetNumSections()
     {
-        int num;
-        char re_enter = 'N';
+        uint sec = 0;
+        bool flag = false;
 
-        try
+        while (!flag)
         {
-            do
+            try
             {
-                Console.Write("Enter number of sections: ");
-                num = Convert.ToInt32(Console.ReadLine());
-
-                if (num <= 0)
-                {
-                    System.Console.Write($"You have entered {num} for the number of sections. This will cause problems. Enter 'Y' if you would like to continue with {num} or 'N' if you would like to enter again.");
-                    re_enter = Convert.ToChar(Console.ReadLine());
-
-                    if (re_enter == 'Y')
-                        break;
-                }
-
-            } while (num <= 0);
-
-
-            return num;
+                sec = GetSec();
+                flag = true;
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (OverflowException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
-        catch (FormatException e)
-        {
-            Console.WriteLine(e.Message);
-            throw;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-            throw;
-        }
+
+        return sec;
     }
 
     // Prompt the user to enter the number of readings per section
-    static int GetNumReadings()
+    static uint GetNumReadings()
     {
-        int num;
-        char re_enter = 'N';
+        uint readings = 0;
+        bool flag = false;
 
-        try
+        while (!flag)
         {
-            do
+            try
             {
-                Console.Write("Enter number of readings per sections: ");
-                num = Convert.ToInt32(Console.ReadLine());
-
-                if (num <= 0)
-                {
-                    System.Console.Write($"You have entered {num} for the number of readings per sections. This will cause problems. Enter 'Y' if you would like to continue with {num} or 'N' if you would like to enter again.");
-                    re_enter = Convert.ToChar(Console.ReadLine());
-
-                    if (re_enter == 'Y')
-                        break;
-                }
-
-            } while (num <= 0);
-
-
-            Console.WriteLine();
-            return num;
+                readings = GetReadings();
+                flag = true;
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (OverflowException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
-        catch (FormatException e)
-        {
-            Console.WriteLine(e.Message);
-            throw;
-        }
+
+        return readings;
     }
 
     // Input temperature readings for each section
-    static void InputData(ref double[,] temp, int sec, int readings)
+    static void InputData(ref double[,] temp, uint sec, uint readings)
     {
 
         for (int i = 0; i < sec; i++)
@@ -159,7 +146,7 @@ internal class Program
     }
 
     // Display the entered sensor data
-    static void DisplayData(double[,] temp, int sec, int readings)
+    static void DisplayData(double[,] temp, uint sec, uint readings)
     {
         for (int i = 0; i < sec; i++)
         {
@@ -173,7 +160,7 @@ internal class Program
     }
 
     //Stats calculations on temperatures
-    static void PerformAnalysis(double[,] temp, ref double avgTemp, ref double[] sectionAvgTemp, ref double[] sectionMaxTemp, ref double[] sectionMinTemp, int sec, int readings)
+    static void PerformAnalysis(double[,] temp, ref double avgTemp, ref double[] sectionAvgTemp, ref double[] sectionMaxTemp, ref double[] sectionMinTemp, uint sec, uint readings)
     {
         for (int i = 0; i < sec; i++)
         {
@@ -220,7 +207,7 @@ internal class Program
     }
 
     //display all stats
-    static void DisplayAnalysis(double avgTemp, double[] sectionAvgTemp, double[] sectionMaxTemp, double[] sectionMinTemp, int sec)
+    static void DisplayAnalysis(double avgTemp, double[] sectionAvgTemp, double[] sectionMaxTemp, double[] sectionMinTemp, uint sec)
     {
         // display the average temperature for all readings across all sections of the greenhouse
         Console.WriteLine($"The average temperature for all readings across all sections of the greenhouse is : {avgTemp:F2}{degreesCelsius}\n");
@@ -245,5 +232,24 @@ internal class Program
         temperature = Convert.ToDouble(Console.ReadLine());
 
         return temperature;
+    }
+    static uint GetSec()
+    {
+        uint temp;
+
+        Console.Write("Enter number of sections: ");
+        temp = Convert.ToUInt32(Console.ReadLine());
+
+        return temp;
+    }
+
+    static uint GetReadings()
+    {
+        uint readings;
+
+        Console.Write("Enter number of readings per sections: ");
+        readings = Convert.ToUInt32(Console.ReadLine());
+
+        return readings;
     }
 }
