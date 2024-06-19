@@ -4,16 +4,17 @@ public class Hospital
 {
     const int maxWards = 3;
     const int maxPatients = 4;
-    private Patient[,] patients = new Patient[maxWards, maxPatients];
+    private Patient[,] patients;
 
     public Hospital()
     {
+        patients = new Patient[maxWards, maxPatients];
+
         for (int i = 0; i < maxWards; i++)
         {
 
             for (int j = 0; j < maxPatients; j++)
             {
-                // patients[i, j] = new Patient();
                 patients[i, j] = null;
             }
         }
@@ -44,7 +45,6 @@ public class Hospital
                 return;
             }
         }
-
         System.Console.WriteLine($"Patient {name} could not be added because Ward {ward} is currently full.\n");
     }
     public void DisplayPatients()
@@ -82,10 +82,6 @@ public class Hospital
             {
                 System.Console.WriteLine($"\tName: {patients[ward, j].Name}, Age: {patients[ward, j].Age}, Condition: {patients[ward, j].Condition}");
             }
-            else
-            {
-                System.Console.WriteLine("\tEmpty");//remove - just for testing
-            }
         }
     }
     public void searchPatient(string patient_name)
@@ -97,7 +93,6 @@ public class Hospital
                 if (patients[i, j] != null && patients[i, j].Name == patient_name)
                 {
                     System.Console.WriteLine($"Patient {patients[i, j].Name} found in ward {i}\n");
-                    patients[i, j] = null;
                     return;
                 }
             }

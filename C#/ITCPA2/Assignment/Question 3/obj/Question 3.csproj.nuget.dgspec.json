@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\THORISO\\OneDrive - Eduvos\\2024\\Block 2\\ITCPA2\\Formative Assessments\\Assignment\\Question 3\\Question 3.csproj": {}
+    "C:\\Users\\THORISO\\OneDrive - Eduvos\\GitHub Projects\\School-Projects\\C#\\ITCPA2\\Assignment\\Question 3\\Question 3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\THORISO\\OneDrive - Eduvos\\2024\\Block 2\\ITCPA2\\Formative Assessments\\Assignment\\Question 3\\Question 3.csproj": {
+    "C:\\Users\\THORISO\\OneDrive - Eduvos\\GitHub Projects\\School-Projects\\C#\\ITCPA2\\Assignment\\Question 3\\Question 3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\THORISO\\OneDrive - Eduvos\\2024\\Block 2\\ITCPA2\\Formative Assessments\\Assignment\\Question 3\\Question 3.csproj",
+        "projectUniqueName": "C:\\Users\\THORISO\\OneDrive - Eduvos\\GitHub Projects\\School-Projects\\C#\\ITCPA2\\Assignment\\Question 3\\Question 3.csproj",
         "projectName": "Question 3",
-        "projectPath": "C:\\Users\\THORISO\\OneDrive - Eduvos\\2024\\Block 2\\ITCPA2\\Formative Assessments\\Assignment\\Question 3\\Question 3.csproj",
+        "projectPath": "C:\\Users\\THORISO\\OneDrive - Eduvos\\GitHub Projects\\School-Projects\\C#\\ITCPA2\\Assignment\\Question 3\\Question 3.csproj",
         "packagesPath": "C:\\Users\\THORISO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\THORISO\\OneDrive - Eduvos\\2024\\Block 2\\ITCPA2\\Formative Assessments\\Assignment\\Question 3\\obj\\",
+        "outputPath": "C:\\Users\\THORISO\\OneDrive - Eduvos\\GitHub Projects\\School-Projects\\C#\\ITCPA2\\Assignment\\Question 3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\THORISO\\AppData\\Roaming\\NuGet\\NuGet.Config"

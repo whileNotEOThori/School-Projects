@@ -8,26 +8,26 @@ public class Patient
 
     public Patient(string n, string c, int a)
     {
-        name = n;
-        condition = c;
-        age = a;
+        this.name = n;
+        this.condition = c;
+        this.age = a;
     }
 
     public string Name
     {
-        get { return name; }
-        set { name = value; }
+        get { return this.name; }
+        set { this.name = value; }
     }
 
     public string Condition
     {
-        get { return condition; }
-        set { condition = value; }
+        get { return this.condition; }
+        set { this.condition = value; }
     }
     public int Age
     {
-        get { return age; }
-        set { age = value; }
+        get { return this.age; }
+        set { this.age = value; }
     }
 
 }
