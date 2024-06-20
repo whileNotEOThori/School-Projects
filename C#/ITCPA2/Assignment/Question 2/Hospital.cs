@@ -7,16 +7,17 @@ public class Hospital
 {
     const int maxWards = 3;
     const int maxPatients = 4;
-    private Patient[,] patients = new Patient[maxWards, maxPatients];
+    private Patient[,] patients;
 
     public Hospital()
     {
+        patients = new Patient[maxWards, maxPatients];
+
         for (int i = 0; i < maxWards; i++)
         {
 
             for (int j = 0; j < maxPatients; j++)
             {
-                // patients[i, j] = new Patient();
                 patients[i, j] = null;
             }
         }
@@ -61,10 +62,6 @@ public class Hospital
                 if (patients[i, j] != null)
                 {
                     System.Console.WriteLine($"\tName: {patients[i, j].Name}, Age: {patients[i, j].Age}, Condition: {patients[i, j].Condition}");
-                }
-                else
-                {
-                    System.Console.WriteLine("\tEmpty");//remove - just for testing
                 }
             }
 

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\THORISO\\OneDrive - Eduvos\\2024\\Block 2\\ITCPA2\\Formative Assessments\\Assignment\\Question 2\\Question 2.csproj",
+      "projectUniqueName": "C:\\Users\\THORISO\\OneDrive - Eduvos\\GitHub Projects\\School-Projects\\C#\\ITCPA2\\Assignment\\Question 2\\Question 2.csproj",
       "projectName": "Question 2",
-      "projectPath": "C:\\Users\\THORISO\\OneDrive - Eduvos\\2024\\Block 2\\ITCPA2\\Formative Assessments\\Assignment\\Question 2\\Question 2.csproj",
+      "projectPath": "C:\\Users\\THORISO\\OneDrive - Eduvos\\GitHub Projects\\School-Projects\\C#\\ITCPA2\\Assignment\\Question 2\\Question 2.csproj",
       "packagesPath": "C:\\Users\\THORISO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\THORISO\\OneDrive - Eduvos\\2024\\Block 2\\ITCPA2\\Formative Assessments\\Assignment\\Question 2\\obj\\",
+      "outputPath": "C:\\Users\\THORISO\\OneDrive - Eduvos\\GitHub Projects\\School-Projects\\C#\\ITCPA2\\Assignment\\Question 2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\THORISO\\AppData\\Roaming\\NuGet\\NuGet.Config"

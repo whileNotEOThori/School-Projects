@@ -8,28 +8,35 @@ using System.Globalization;
 internal class Program
 {
     //Global formatting constant for degree symbol
-    const string degreesCelsius = "\u00B0C"; //unicode for Degree character
+    const string degreesCelsius = "\u00B0C"; //unicode for Degree character and C
+
+    // Global variable declarations
+    static uint numSections, readingsPerSection;
+    static double[,] temperatures;
+    static double avgTemp = 0.00;
+    static double[] sectionAvgTemp;
+    static double[] sectionMaxTemp;
+    static double[] sectionMinTemp;
 
     private static void Main(string[] args)
     {
         //Prompt user for data
-        uint numSections = GetNumSections();
-        uint readingsPerSection = GetNumReadings();
+        numSections = GetNumSections();
+        readingsPerSection = GetNumReadings();
 
-        // Local variable declarations
-        double[,] temperatures = new double[numSections, readingsPerSection];
-        double avgTemp = 0.00;
-        double[] sectionAvgTemp = new double[numSections];
-        double[] sectionMaxTemp = new double[numSections];
-        double[] sectionMinTemp = new double[numSections];
+        temperatures = new double[numSections, readingsPerSection];
+        avgTemp = 0.00;
+        sectionAvgTemp = new double[numSections];
+        sectionMaxTemp = new double[numSections];
+        sectionMinTemp = new double[numSections];
 
-        InputData(ref temperatures, numSections, readingsPerSection);
+        InputData();
 
-        DisplayData(temperatures, numSections, readingsPerSection);
+        DisplayData();
 
-        PerformAnalysis(temperatures, ref avgTemp, ref sectionAvgTemp, ref sectionMaxTemp, ref sectionMinTemp, numSections, readingsPerSection);
+        PerformAnalysis();
 
-        DisplayAnalysis(avgTemp, sectionAvgTemp, sectionMaxTemp, sectionMinTemp, numSections);
+        DisplayAnalysis();
 
     }
 
@@ -43,7 +50,8 @@ internal class Program
         {
             try
             {
-                sec = GetSec();
+                Console.Write("Enter number of sections: ");
+                sec = Convert.ToUInt32(Console.ReadLine());
                 flag = true;
             }
             catch (FormatException e)
@@ -73,7 +81,8 @@ internal class Program
         {
             try
             {
-                readings = GetReadings();
+                Console.Write("Enter number of readings per sections: ");
+                readings = Convert.ToUInt32(Console.ReadLine());
                 flag = true;
             }
             catch (FormatException e)
@@ -94,17 +103,17 @@ internal class Program
     }
 
     // Input temperature readings for each section
-    static void InputData(ref double[,] temp, uint sec, uint readings)
+    static void InputData()
     {
 
-        for (int i = 0; i < sec; i++)
+        for (int i = 0; i < numSections; i++)
         {
             Console.WriteLine($"Enter the temperature readings for section {i + 1}: ");
-            for (int j = 0; j < readings; j++)
+            for (int j = 0; j < readingsPerSection; j++)
             {
                 try
                 {
-                    temp[i, j] = EnterTemp(j);
+                    temperatures[i, j] = EnterTemp(j);
                 }
                 catch (FormatException e)
                 {
@@ -116,7 +125,7 @@ internal class Program
                     {
                         try
                         {
-                            temp[i, j] = EnterTemp(j);
+                            temperatures[i, j] = EnterTemp(j);
                             flag = true;
                         }
                         catch (FormatException f)
@@ -146,47 +155,47 @@ internal class Program
     }
 
     // Display the entered sensor data
-    static void DisplayData(double[,] temp, uint sec, uint readings)
+    static void DisplayData()
     {
-        for (int i = 0; i < sec; i++)
+        for (int i = 0; i < numSections; i++)
         {
             Console.WriteLine($"The temperature readings for section {i + 1}: ");
-            for (int j = 0; j < readings; j++)
+            for (int j = 0; j < readingsPerSection; j++)
             {
-                Console.WriteLine($"\t Temperature reading {j + 1}: {temp[i, j]}{degreesCelsius}");
+                Console.WriteLine($"\t Temperature reading {j + 1}: {temperatures[i, j]}{degreesCelsius}");
             }
         }
         Console.WriteLine();
     }
 
     //Stats calculations on temperatures
-    static void PerformAnalysis(double[,] temp, ref double avgTemp, ref double[] sectionAvgTemp, ref double[] sectionMaxTemp, ref double[] sectionMinTemp, uint sec, uint readings)
+    static void PerformAnalysis()
     {
-        for (int i = 0; i < sec; i++)
+        for (int i = 0; i < numSections; i++)
         {
             sectionAvgTemp[i] = 0.00;
-            sectionMaxTemp[i] = temp[i, 0];
-            sectionMinTemp[i] = temp[i, 0];
-            for (int j = 0; j < readings; j++)
+            sectionMaxTemp[i] = temperatures[i, 0];
+            sectionMinTemp[i] = temperatures[i, 0];
+            for (int j = 0; j < readingsPerSection; j++)
             {
-                avgTemp += temp[i, j];//calculate universal avg temp
-                sectionAvgTemp[i] += temp[i, j]; // calculate section avg temp
+                avgTemp += temperatures[i, j];//calculate universal avg temp
+                sectionAvgTemp[i] += temperatures[i, j]; // calculate section avg temp
 
                 //determine section max temp
-                if (sectionMaxTemp[i] < temp[i, j])
+                if (sectionMaxTemp[i] < temperatures[i, j])
                 {
-                    sectionMaxTemp[i] = temp[i, j];
+                    sectionMaxTemp[i] = temperatures[i, j];
                 }
 
                 //determine section min temp
-                if (sectionMinTemp[i] > temp[i, j])
+                if (sectionMinTemp[i] > temperatures[i, j])
                 {
-                    sectionMinTemp[i] = temp[i, j];
+                    sectionMinTemp[i] = temperatures[i, j];
                 }
             }
             try
             {
-                sectionAvgTemp[i] = sectionAvgTemp[i] / readings; //calculate section avg temp
+                sectionAvgTemp[i] = sectionAvgTemp[i] / readingsPerSection; //calculate section avg temp
             }
             catch (DivideByZeroException e)
             {
@@ -197,7 +206,7 @@ internal class Program
 
         try
         {
-            avgTemp = avgTemp / (sec * readings);//calculate universal avg temp
+            avgTemp = avgTemp / (numSections * readingsPerSection);//calculate universal avg temp
         }
         catch (DivideByZeroException e)
         {
@@ -207,14 +216,14 @@ internal class Program
     }
 
     //display all stats
-    static void DisplayAnalysis(double avgTemp, double[] sectionAvgTemp, double[] sectionMaxTemp, double[] sectionMinTemp, uint sec)
+    static void DisplayAnalysis()
     {
         // display the average temperature for all readings across all sections of the greenhouse
         Console.WriteLine($"The average temperature for all readings across all sections of the greenhouse is : {avgTemp:F2}{degreesCelsius}\n");
 
         // display the stats for all readings in each section of the greenhouse
         Console.WriteLine($"The temperature statistics for all readings in each section of the greenhouse is :");
-        for (int i = 0; i < sec; i++)
+        for (int i = 0; i < numSections; i++)
         {
             Console.WriteLine($"Section {i + 1}:");
             Console.WriteLine($"\tAverage temperature: {sectionAvgTemp[i]:F2}{degreesCelsius}");
@@ -232,24 +241,5 @@ internal class Program
         temperature = Convert.ToDouble(Console.ReadLine());
 
         return temperature;
-    }
-    static uint GetSec()
-    {
-        uint temp;
-
-        Console.Write("Enter number of sections: ");
-        temp = Convert.ToUInt32(Console.ReadLine());
-
-        return temp;
-    }
-
-    static uint GetReadings()
-    {
-        uint readings;
-
-        Console.Write("Enter number of readings per sections: ");
-        readings = Convert.ToUInt32(Console.ReadLine());
-
-        return readings;
     }
 }

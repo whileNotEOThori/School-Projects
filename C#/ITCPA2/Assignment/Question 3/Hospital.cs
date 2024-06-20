@@ -100,6 +100,4 @@ public class Hospital
 
         System.Console.WriteLine($"Patient {patient_name} not found in any ward\n");
     }
-
-
 }
