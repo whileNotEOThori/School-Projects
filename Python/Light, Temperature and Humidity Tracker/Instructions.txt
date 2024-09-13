@@ -1,0 +1,37 @@
+Components used:
+    * Raspberry Pi 4​
+    * Breadboard​
+    * LDR sensor​
+    * DHT22 sensor​
+    * Capacitor​
+    * Female-to-male jumper wires​
+    * Male-to-male jumper wires
+
+Connections:
+    1. Connect the LDR sesnor to the breadboard​
+    2. Connect one end of a male-to-male jumper wire to the same column as the positive leg of the LDR sensor and the other end to the positive power rail​
+    3. Connect the femaile side of a female-to-male jumper wire to GPIO Pin 21 (pin 40) on the Raspberry Pi and the male side to a point next to the negative leg of the LDR sensor​
+    4. Connect the postive leg of the capacitor to the a point after the female-to-male jumper wire connected to GPIO21​
+    5. Connect one end of  a male-to-male jumper wire to the same column as the negative leg of the capacitor and the other end to the negative power rail to ground the circuit​
+    6. Connect the DHT22 sensor to the bread board​
+    7. Connect a one end of a male-to-male jumper wire to the same column as positive terminal on the DHT22 sensor and the other to the positive power rail​
+    8. Connect one end of a male-to-male jumper wire to the same column negative terminal on the DHT22 sensor and the other to the negative power rail​
+    9. Connect the female end of the female-to-male jumper wire to GPIO Piin 20 (pin38) on the Raspberry Pi and the male end to the same column as the middle terminal of the DHT22 sensor​
+    10. Connect the female side of a female-to-male jumper wire to the 3V GPIO Pin (pin 1)on the Raspberry Pi and the male side to the positive power rail on the breadboard​
+    11. Connect the female side of a female-to-male jumper wire to the ground GPIO Pin (pin 6) on the Raspberry Pi to the negative power rail on the breadboard
+
+Logging:​
+    * Readings are retrieved from the sensors and then stored in the arrays in batches of 1000​
+Storage:​
+    * Once 1000 readings are retrieved from the arrays they will be written into a textfile and then the array is cleared to save system memory​
+Transmission:​
+    * Once the next 1000 sensor readings are retrieved from the sensors they will be saved to a textfile as well and then the 1000 readings before will be transmitted to the web server and then deleted from the local storage location.​
+    * To simlate web server transmission via TCP we will move the file to another folder on the device
+
+This code is will read the light intensity, temperature and humidity. The light intensity will be read using a Light Dependent Resistor (LDR) along with a capacitor, 
+the temperature and humidity will be read using the DHT22 sensor. Make the necessary component connections and run the program on a Raspberry Pi.
+Run these commands on the terminal before running the program
+ * git clone https://github.com/adafruit/Adafruit_Python_DHT.git
+ * cd Adafruit_Python_DHT
+ * sudo apt-get install build-essential python-openssl
+ * sudo python3 setup.py install
