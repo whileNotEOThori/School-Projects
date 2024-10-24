@@ -1,6 +1,6 @@
 ﻿namespace Question_1;
 
-public class Class1
+public class Edge<T>
 {
 
 }
