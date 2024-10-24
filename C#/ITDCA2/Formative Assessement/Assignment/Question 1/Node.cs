@@ -2,14 +2,14 @@
 
 public class Node<T>
 {
-    private int index { get; set; }
-    private T data { get; set; }
-    private List<Node<T>> adjacencies = new List<Node<T>>();
+    private int index; //index variable for easy node access
+    private T data; //data storage variable
+    private List<Node<T>> adjacencies = new List<Node<T>>(); //adjacency list
     private List<int> weights = new List<int>();
 
     public override string ToString()
     {
-        return $"Node with index {index}: {data}, neighbors: {adjacencies.Count}";
+        return $"Node index: {index}\nNode data: {data}\nNode adjacencies: {adjacencies.Count}";
     }
 
     public int Index
@@ -18,7 +18,7 @@ public class Node<T>
         set { index = value; }
     }
 
-    private T Data
+    public T Data
     {
         get { return data; }
         set { data = value; }
