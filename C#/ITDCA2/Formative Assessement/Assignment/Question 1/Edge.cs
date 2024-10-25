@@ -4,7 +4,7 @@ public class Edge<T>
 {
     private Node<T> sourceNode;
     private Node<T> destinationNode;
-    private int weight;
+    private int weight = 0;  //default-ish value
 
     public override string ToString()
     {

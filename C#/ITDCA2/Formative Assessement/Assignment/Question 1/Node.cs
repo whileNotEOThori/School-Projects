@@ -2,7 +2,7 @@
 
 public class Node<T>
 {
-    private int index; //index variable for easy node access
+    private int index; //index variable for easy node access. Nodes are labelled with integers
     private T data; //data storage variable
     private List<Node<T>> adjacencies = new List<Node<T>>(); //adjacency list
     private List<int> weights = new List<int>();
