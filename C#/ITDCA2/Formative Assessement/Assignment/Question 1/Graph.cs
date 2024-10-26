@@ -1,4 +1,6 @@
-﻿namespace Question_1;
+﻿using System.Runtime.InteropServices.Marshalling;
+
+namespace Question_1;
 
 public class Graph<T>
 {
@@ -6,6 +8,7 @@ public class Graph<T>
     private bool isDirected;// = false;
     private bool isWeighted;// = true;
     private List<Node<T>> nodes = new List<Node<T>>();
+    private int nodeCount = 0;
 
     //Constructor 
     public Graph(bool id = false, bool iw = true) //default values for this implementation
@@ -41,17 +44,18 @@ public class Graph<T>
         node.Data = nodeValue; //set the data in the node
         nodes.Add(node); //adds node to the graph adjacency list
         UpdateIndices();
+        nodeCount++;
         return node;
     }
 
     //optional possibly remove
     //Node based AddNode Overload
-    public Node<T> AddNode(Node<T> nodeToAdd)
+    /*public Node<T> AddNode(Node<T> nodeToAdd)
     {
         nodes.Add(nodeToAdd); //adds node to the graph adjacency list
         UpdateIndices();
         return nodeToAdd;
-    }
+    }*/
 
     public void RemoveNode(Node<T> nodeToRemove)
     {
@@ -59,6 +63,7 @@ public class Graph<T>
         UpdateIndices();
         foreach (var node in nodes)
             RemoveEdge(node, nodeToRemove);
+        nodeCount--;
     }
 
     public void AddEdge(Node<T> sourceNode, Node<T> destinationNode, int weight = 0)
@@ -112,5 +117,10 @@ public class Graph<T>
     {
         get { return nodes; }
         set { nodes = value; }
+    }
+
+    public int NodeCount
+    {
+        get { return nodeCount; }
     }
 }

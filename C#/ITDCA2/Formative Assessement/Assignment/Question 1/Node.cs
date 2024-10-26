@@ -7,9 +7,21 @@ public class Node<T>
     private List<Node<T>> adjacencies = new List<Node<T>>(); //adjacency list
     private List<int> weights = new List<int>();
 
+    //default constructor
+    /*public Node()
+    {
+    }
+
+    //value based constructor
+    public Node(T dataValue)
+    {
+        data = dataValue;
+    }*/
+
     public override string ToString()
     {
-        return $"Node index: {index}\nNode data: {data}\nNode adjacencies: {adjacencies.Count}";
+        return $"Node index: {index}\nNode data: {Convert.ToString(this.data)}\nNumber of node adjacencies: {adjacencies.Count}";
+        // return Convert.ToString(data);
     }
 
     public int Index
