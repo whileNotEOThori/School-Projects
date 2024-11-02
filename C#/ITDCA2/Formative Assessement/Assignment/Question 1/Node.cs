@@ -35,14 +35,16 @@ public class Node
     //////////////////////////////////////////ADD NEIGHBOR/////////////////////////////////////////////
     public void AddNeighbor(Node node)
     {
-        if (!neighbors.Contains(node))
+        if (neighbors.Contains(node))
+        {
+            Console.WriteLine("Node is already a neighbor.");
+        }
+        else
         {
             neighbors.Add(node);
             Console.WriteLine("Node added as a neighbor.");
             return;
         }
-
-        Console.WriteLine("Node is already a neighbor.");
     }
 
     ////////////////////////////////////////REMOVE NEIGHBOR////////////////////////////////////////////
@@ -52,13 +54,32 @@ public class Node
         {
             neighbors.Remove(node);
             Console.WriteLine("Node removed as a neighbor.");
-            return;
         }
-
-        Console.WriteLine("Node is not a neighbor.");
+        else
+        {
+            Console.WriteLine("Node is not a neighbor.");
+        }
     }
 
-    /////////////////////////////////////ToSTring Override////////////////////////////////////////
+    ////////////////////////////////////////REMOVE ALL NEIGHBORS////////////////////////////////////////////
+    public void RemoveAllNeighbors()
+    {
+        int neighborCount = neighbors.Count;
+
+        if (neighborCount == 0)
+        {
+            Console.WriteLine("No neighbors to remove.");
+        }
+        else
+        {
+            for (int i = neighborCount - 1; i >= 0; i--)
+                neighbors.Remove(neighbors[i]);
+
+            Console.WriteLine("All neighbors removed.");
+        }
+    }
+
+    /////////////////////////////////////ToString Override////////////////////////////////////////
     public override string ToString()
     {
         int neighborCount = neighbors.Count;
@@ -67,7 +88,7 @@ public class Node
 
         if (neighborCount <= 0)
         {
-            result += $"\tNo neighbors";
+            result += $"\tNo neighbors\n";
         }
         else
         {

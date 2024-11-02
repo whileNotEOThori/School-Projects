@@ -4,7 +4,9 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        Console.WriteLine(@"///////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////Main/////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////");
         Node_UnitTest();
     }
 
@@ -13,12 +15,18 @@ internal class Program
     ///////////////////////////////////////////////////////////////////////////////////////////
     static void Node_UnitTest()
     {
+        Console.WriteLine(@"///////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////NODE UNIT TESTING/////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////");
+
         //constructor test
+        Console.WriteLine("constructor test");
         Node a = new Node();
         Node b = new Node(2);
         Node c = new Node(b);
 
         //getter and setter test
+        Console.WriteLine("getter and setter test");
         Console.WriteLine($"node a:");
         Console.WriteLine($"\t data: {a.Data}");
         Console.WriteLine($"\t index: {a.Index}");
@@ -39,16 +47,25 @@ internal class Program
         Console.WriteLine($"\t weight count: {c.Weights.Count}");
 
         //AddNeighbor and RemoveNeighbor test
+        Console.WriteLine("AddNeighbor and RemoveNeighbor test");
         a.AddNeighbor(b);
         a.AddNeighbor(c);
         c.RemoveNeighbor(c);
         b.AddNeighbor(c);
         b.RemoveNeighbor(c);
 
+        //ToString test
+        Console.WriteLine("ToString test");
         Console.WriteLine(a.ToString());
         Console.WriteLine(b.ToString());
         Console.WriteLine(c.ToString());
 
+        //RemoveAllNeighbors test
+        Console.WriteLine("RemoveAllNeighbors test");
+        b.RemoveAllNeighbors();
+        Console.WriteLine(b.ToString());
+        a.RemoveAllNeighbors();
+        Console.WriteLine(a.ToString());
     }
 }
 
