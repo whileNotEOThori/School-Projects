@@ -58,6 +58,29 @@ public class Node
         Console.WriteLine("Node is not a neighbor.");
     }
 
+    /////////////////////////////////////ToSTring Override////////////////////////////////////////
+    public override string ToString()
+    {
+        int neighborCount = neighbors.Count;
+
+        string result = $"Index: {index}\nData: {data}\nNeighbor Count: {neighborCount}\n";
+
+        if (neighborCount <= 0)
+        {
+            result += $"\tNo neighbors";
+        }
+        else
+        {
+            result += $"Neighbors:\n";
+            foreach (var neighbor in neighbors)
+            {
+                result += $"\t{neighbor.Data}\n";
+            }
+        }
+        return result;
+    }
+
+
     //////////////////////////////////////Getters and Setters/////////////////////////////////////////
     public int Data
     {

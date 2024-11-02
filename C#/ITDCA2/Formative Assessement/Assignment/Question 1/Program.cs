@@ -13,11 +13,12 @@ internal class Program
     ///////////////////////////////////////////////////////////////////////////////////////////
     static void Node_UnitTest()
     {
-        //default constructor test
+        //constructor test
         Node a = new Node();
         Node b = new Node(2);
         Node c = new Node(b);
 
+        //getter and setter test
         Console.WriteLine($"node a:");
         Console.WriteLine($"\t data: {a.Data}");
         Console.WriteLine($"\t index: {a.Index}");
@@ -37,11 +38,16 @@ internal class Program
         Console.WriteLine($"\t neighbor count: {c.Neighbors.Count}");
         Console.WriteLine($"\t weight count: {c.Weights.Count}");
 
+        //AddNeighbor and RemoveNeighbor test
         a.AddNeighbor(b);
         a.AddNeighbor(c);
         c.RemoveNeighbor(c);
         b.AddNeighbor(c);
         b.RemoveNeighbor(c);
+
+        Console.WriteLine(a.ToString());
+        Console.WriteLine(b.ToString());
+        Console.WriteLine(c.ToString());
 
     }
 }
