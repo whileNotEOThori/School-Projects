@@ -133,8 +133,38 @@ internal class Program
         Console.WriteLine("///////////////////////////////////constructor test///////////////////////////////////");
         Graph g = new Graph();
 
+        Console.WriteLine();
+
         Console.WriteLine("///////////////////////////////////getters and setters test///////////////////////////////////");
         Console.WriteLine($"Node count: {g.Nodes.Count}");
         Console.WriteLine($"Node count: {g.Edges.Count}");
+
+        Console.WriteLine();
+
+        Console.WriteLine("///////////////////////////////////AddNode test///////////////////////////////////");
+        Node a = new Node();
+        Node b = new Node(2);
+        Node c = new Node(b);
+
+        g.AddNode(a);
+        g.AddNode(b);
+        g.AddNode(c);
+
+        Console.WriteLine($"Node count: {g.NodeCount}");
+
+        Console.WriteLine();
+
+        Console.WriteLine("///////////////////////////////////RemoveNode test///////////////////////////////////");
+        g.RemoveNode(c);
+        Console.WriteLine($"Node count: {g.NodeCount}");
+
+        Console.WriteLine();
+
+        Console.WriteLine("///////////////////////////////////RemoveAllNode test///////////////////////////////////");
+        g.RemoveAllNodes();
+        Console.WriteLine($"Node count: {g.NodeCount}");
+
+        Console.WriteLine();
+
     }
 }
