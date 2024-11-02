@@ -10,8 +10,11 @@ internal class Program
         // Console.WriteLine();
         // Node_UnitTest();
 
+        // Console.WriteLine();
+        // Edge_UnitTest();
+
+        Graph_UnitTest();
         Console.WriteLine();
-        Edge_UnitTest();
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
@@ -119,5 +122,19 @@ internal class Program
             Console.WriteLine(edge.ToString());
         }
     }
-}
 
+    static void Graph_UnitTest()
+    {
+        Console.WriteLine(@"///////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////Graph UNIT TESTING/////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////");
+        Console.WriteLine();
+
+        Console.WriteLine("///////////////////////////////////constructor test///////////////////////////////////");
+        Graph g = new Graph();
+
+        Console.WriteLine("///////////////////////////////////getters and setters test///////////////////////////////////");
+        Console.WriteLine($"Node count: {g.Nodes.Count}");
+        Console.WriteLine($"Node count: {g.Edges.Count}");
+    }
+}
