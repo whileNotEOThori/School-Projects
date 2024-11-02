@@ -32,6 +32,32 @@ public class Node
         weights = new List<int>();
     }
 
+    //////////////////////////////////////////ADD NEIGHBOR/////////////////////////////////////////////
+    public void AddNeighbor(Node node)
+    {
+        if (!neighbors.Contains(node))
+        {
+            neighbors.Add(node);
+            Console.WriteLine("Node added as a neighbor.");
+            return;
+        }
+
+        Console.WriteLine("Node is already a neighbor.");
+    }
+
+    ////////////////////////////////////////REMOVE NEIGHBOR////////////////////////////////////////////
+    public void RemoveNeighbor(Node node)
+    {
+        if (neighbors.Contains(node))
+        {
+            neighbors.Remove(node);
+            Console.WriteLine("Node removed as a neighbor.");
+            return;
+        }
+
+        Console.WriteLine("Node is not a neighbor.");
+    }
+
     //////////////////////////////////////Getters and Setters/////////////////////////////////////////
     public int Data
     {

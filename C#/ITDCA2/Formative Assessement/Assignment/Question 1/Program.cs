@@ -37,6 +37,12 @@ internal class Program
         Console.WriteLine($"\t neighbor count: {c.Neighbors.Count}");
         Console.WriteLine($"\t weight count: {c.Weights.Count}");
 
+        a.AddNeighbor(b);
+        a.AddNeighbor(c);
+        c.RemoveNeighbor(c);
+        b.AddNeighbor(c);
+        b.RemoveNeighbor(c);
+
     }
 }
 
