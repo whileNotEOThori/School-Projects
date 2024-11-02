@@ -21,15 +21,22 @@ internal class Program
         Console.WriteLine($"node a:");
         Console.WriteLine($"\t data: {a.Data}");
         Console.WriteLine($"\t index: {a.Index}");
-
+        Console.WriteLine($"\t neighbor count: {a.Neighbors.Count}");
+        Console.WriteLine($"\t weight count: {a.Weights.Count}");
 
         Console.WriteLine($"node b:");
         Console.WriteLine($"\t data: {b.Data}");
         Console.WriteLine($"\t index: {b.Index}");
+        Console.WriteLine($"\t neighbor count: {b.Neighbors.Count}");
+        Console.WriteLine($"\t weight count: {b.Weights.Count}");
+
 
         Console.WriteLine($"node c:");
         Console.WriteLine($"\t data: {c.Data}");
         Console.WriteLine($"\t index: {c.Index}");
+        Console.WriteLine($"\t neighbor count: {c.Neighbors.Count}");
+        Console.WriteLine($"\t weight count: {c.Weights.Count}");
+
     }
 }
 

@@ -7,14 +7,14 @@ public class Node
     private List<Node> neighbors;
     private List<int> weights;
 
-    //default constructor
+    ///////////////////////////////////default constructor/////////////////////////////////////////
     public Node()
     {
         neighbors = new List<Node>();
         weights = new List<int>();
     }
 
-    //value based constructor
+    ///////////////////////////////////value based constructor/////////////////////////////////////////
     public Node(int value)
     {
         data = value;
@@ -22,7 +22,8 @@ public class Node
         weights = new List<int>();
     }
 
-    //node based copy constructor
+
+    ///////////////////////////////////node based copy constructor//////////////////////////////////////
     public Node(Node node)
     {
         data = node.Data;
@@ -31,6 +32,7 @@ public class Node
         weights = new List<int>();
     }
 
+    //////////////////////////////////////Getters and Setters/////////////////////////////////////////
     public int Data
     {
         get { return data; }
@@ -40,6 +42,15 @@ public class Node
     {
         get { return index; }
         set { index = value; }
+    }
+
+    public List<Node> Neighbors
+    {
+        get { return neighbors; }
+    }
+    public List<int> Weights
+    {
+        get { return weights; }
     }
 
 }
