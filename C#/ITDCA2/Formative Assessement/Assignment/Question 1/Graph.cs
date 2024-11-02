@@ -5,16 +5,15 @@ namespace Question_1;
 public class Graph<T>
 {
     // In your implementation, graphs are not directional, but they are weighted. 
-    private bool isDirected;// = false;
-    private bool isWeighted;// = true;
+    private bool isDirected = false;
+    private bool isWeighted = true;
     private List<Node<T>> nodes = new List<Node<T>>();
     private int nodeCount = 0;
 
     //Constructor 
-    public Graph(bool id = false, bool iw = true) //default values for this implementation
+    public Graph() //default values for this implementation
     {
-        isDirected = id;
-        isWeighted = iw;
+
     }
 
     public Edge<T> this[int sourceIndex, int destinationIndex]
@@ -38,14 +37,14 @@ public class Graph<T>
     }
 
     // Value based AddNode
-    public Node<T> AddNode(T nodeValue)
+    public void/* Node<T>*/ AddNode(T nodeValue)
     {
         Node<T> node = new Node<T>(); //create a new node
         node.Data = nodeValue; //set the data in the node
         nodes.Add(node); //adds node to the graph adjacency list
         UpdateIndices();
         nodeCount++;
-        return node;
+        // return node;
     }
 
     //optional possibly remove
@@ -88,9 +87,12 @@ public class Graph<T>
     public List<Edge<T>> GetEdges()
     {
         List<Edge<T>> edges = new List<Edge<T>>();
+        Console.WriteLine("In GetEdges method");
 
-        foreach (Node<T> node in nodes)  //iterate through nodes
+        foreach (Node<T> node in this.Nodes)  //iterate through nodes
         {
+            // Console.WriteLine($"loop: {node.ToString()}");
+            Console.WriteLine(node.Adjacencies.Count);
             for (int i = 0; i < node.Adjacencies.Count; i++)  //iternate through each nodes adjacency list
             {
                 Edge<T> edge = new Edge<T>();

@@ -1,26 +1,33 @@
-﻿namespace Question_1;
+﻿
+namespace Question_1;
 
 public class Node<T>
 {
-    private int index; //index variable for easy node access. Nodes are labelled with integers
+    private int index; //index variable for easy node access. Nodes are labelled with integersN
     private T data; //data storage variable
-    private List<Node<T>> adjacencies = new List<Node<T>>(); //adjacency list
-    private List<int> weights = new List<int>();
+    private List<Node<T>> adjacencies; //adjacency list
+    private List<int> weights;
 
     //default constructor
-    /*public Node()
+    public Node()
     {
+        adjacencies = new List<Node<T>>();
+        weights = new List<int>();
     }
 
     //value based constructor
     public Node(T dataValue)
     {
         data = dataValue;
-    }*/
+        adjacencies = new List<Node<T>>();
+        weights = new List<int>();
+    }
 
     public override string ToString()
     {
-        return $"Node index: {index}\nNode data: {Convert.ToString(this.data)}\nNumber of node adjacencies: {adjacencies.Count}";
+        // {Convert.ToString(this.data)} insert in data line
+        // this.
+        return $"Node index: {this.index}\nNode data: {Convert.ToString(this.N)}\nNumber of node adjacencies: {this.adjacencies.Count}";
         // return Convert.ToString(data);
     }
 
@@ -47,4 +54,5 @@ public class Node<T>
         get { return weights; }
         set { weights = value; }
     }
+
 }
