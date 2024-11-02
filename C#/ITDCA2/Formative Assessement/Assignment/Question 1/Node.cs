@@ -23,27 +23,34 @@ public class Node
     }
 
 
-    ///////////////////////////////////node based copy constructor//////////////////////////////////////
+    ///////////////////////////////////node based AKA copy constructor//////////////////////////////////////
     public Node(Node node)
     {
         data = node.Data;
         index = node.Index;
+
         neighbors = new List<Node>();
+        foreach (var neighbor in node.Neighbors)
+        {
+            this.neighbors.Add(neighbor);
+        }
+
         weights = new List<int>();
+        foreach (var weight in node.Weights)
+        {
+            this.weights.Add(weight);
+        }
     }
 
     //////////////////////////////////////////ADD NEIGHBOR/////////////////////////////////////////////
     public void AddNeighbor(Node node)
     {
         if (neighbors.Contains(node))
-        {
             Console.WriteLine("Node is already a neighbor.");
-        }
         else
         {
             neighbors.Add(node);
             Console.WriteLine("Node added as a neighbor.");
-            return;
         }
     }
 
@@ -56,9 +63,7 @@ public class Node
             Console.WriteLine("Node removed as a neighbor.");
         }
         else
-        {
             Console.WriteLine("Node is not a neighbor.");
-        }
     }
 
     ////////////////////////////////////////REMOVE ALL NEIGHBORS////////////////////////////////////////////
@@ -67,9 +72,7 @@ public class Node
         int neighborCount = neighbors.Count;
 
         if (neighborCount == 0)
-        {
             Console.WriteLine("No neighbors to remove.");
-        }
         else
         {
             for (int i = neighborCount - 1; i >= 0; i--)
@@ -87,9 +90,7 @@ public class Node
         string result = $"Index: {index}\nData: {data}\nNeighbor Count: {neighborCount}\n";
 
         if (neighborCount <= 0)
-        {
             result += $"\tNo neighbors\n";
-        }
         else
         {
             result += $"Neighbors:\n";
