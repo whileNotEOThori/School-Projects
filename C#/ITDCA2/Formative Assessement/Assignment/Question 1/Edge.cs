@@ -14,6 +14,13 @@ public class Edge
         weight = w;
     }
 
+    /////////////////////////////////////ToString Override////////////////////////////////////////
+    public override string ToString()
+    {
+        string result = $"Source Node: {sourceNode.Data} -> Destination Node: {destinationNode.Data}, weight {weight}";
+        return result;
+    }
+
     //////////////////////////////////////Getters and Setters/////////////////////////////////////////
     public Node SourceNode
     {

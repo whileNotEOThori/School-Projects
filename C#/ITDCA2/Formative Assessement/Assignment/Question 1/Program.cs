@@ -112,6 +112,12 @@ internal class Program
             Console.WriteLine(edge.Weight);
 
         }
+
+        Console.WriteLine("///////////////////////////////////ToString test///////////////////////////////////");
+        foreach (var edge in edges)
+        {
+            Console.WriteLine(edge.ToString());
+        }
     }
 }
 
