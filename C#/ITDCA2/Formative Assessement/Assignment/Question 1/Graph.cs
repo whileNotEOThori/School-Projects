@@ -137,7 +137,7 @@ public class Graph
         Console.WriteLine($"Edge removed from the graph.");
     }
 
-    //////////////////////////////////////////REOMVE ALL EDGES/////////////////////////////////////////////
+    //////////////////////////////////////////REMOVE ALL EDGES/////////////////////////////////////////////
     public void RemoveAllEdges()
     {
         if (EdgeCount == 0)
@@ -152,8 +152,24 @@ public class Graph
     }
 
     //////////////////////////////////////////GET NODES/////////////////////////////////////////////
+    public void getNodes()
+    {
+        Console.WriteLine($"{NodeCount}.");
+        foreach (var node in nodes)
+        {
+            Console.WriteLine(node.ToString());
+        }
+    }
 
     //////////////////////////////////////////GET EDGES/////////////////////////////////////////////
+    public void getEdges()
+    {
+        Console.WriteLine($"{EdgeCount}.");
+        foreach (var edge in Edges)
+        {
+            Console.WriteLine(edge.ToString());
+        }
+    }
 
     //////////////////////////////////////////UPDATE INDICES/////////////////////////////////////////////
 

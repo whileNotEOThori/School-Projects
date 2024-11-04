@@ -216,10 +216,13 @@ internal class Program
         Console.WriteLine("///////////////////////////////////RemoveAllEdge test///////////////////////////////////");
         g.RemoveAllEdges();
 
-        Console.WriteLine($"{g.EdgeCount}.");
-        foreach (var edge in g.Edges)
-        {
-            Console.WriteLine(edge.ToString());
-        }
+        g.getNodes();
+        g.getEdges();
+
+        // Console.WriteLine($"{g.EdgeCount}.");
+        // foreach (var edge in g.Edges)
+        // {
+        //     Console.WriteLine(edge.ToString());
+        // }
     }
 }
