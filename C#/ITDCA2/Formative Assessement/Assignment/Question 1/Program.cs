@@ -39,14 +39,11 @@ internal class Program
         Console.WriteLine($"\t data: {a.Data}");
         Console.WriteLine($"\t index: {a.Index}");
         Console.WriteLine($"\t neighbor count: {a.Neighbors.Count}");
-        Console.WriteLine($"\t weight count: {a.Weights.Count}");
 
         Console.WriteLine($"node b:");
         Console.WriteLine($"\t data: {b.Data}");
         Console.WriteLine($"\t index: {b.Index}");
         Console.WriteLine($"\t neighbor count: {b.Neighbors.Count}");
-        Console.WriteLine($"\t weight count: {b.Weights.Count}");
-
 
         Console.WriteLine($"node c:");
         Console.WriteLine($"\t data: {c.Data}");
@@ -56,7 +53,6 @@ internal class Program
         Console.WriteLine($"\t data: {c.Data}");
         Console.WriteLine($"\t index: {c.Index}");
         Console.WriteLine($"\t neighbor count: {c.Neighbors.Count}");
-        Console.WriteLine($"\t weight count: {c.Weights.Count}");
 
         //AddNeighbor and RemoveNeighbor test
         Console.WriteLine("///////////////////////////////////AddNeighbor and RemoveNeighbor test///////////////////////////////////");
@@ -142,13 +138,14 @@ internal class Program
         Console.WriteLine();
 
         Console.WriteLine("///////////////////////////////////AddNode test///////////////////////////////////");
-        Node a = new Node();
+        Node a = new Node(1);
         Node b = new Node(2);
-        Node c = new Node(b);
+        Node c = new Node(3);
 
         g.AddNode(a);
         g.AddNode(b);
         g.AddNode(c);
+        g.AddNode(a);
 
         Console.WriteLine($"Node count: {g.NodeCount}");
 
@@ -166,5 +163,63 @@ internal class Program
 
         Console.WriteLine();
 
+        Node d = new Node(4);
+        Node e = new Node(5);
+        Node f = new Node(6);
+        g.AddNode(a);
+        g.AddNode(b);
+        g.AddNode(c);
+        // g.AddNode(d);
+        // g.AddNode(e);
+        // g.AddNode(f);
+        Console.WriteLine($"Node count: {g.NodeCount}");
+        // a.AddNeighbor(b);
+        // a.AddNeighbor(c);
+
+        Console.WriteLine("///////////////////////////////////AddEdge test///////////////////////////////////");
+        Console.WriteLine("a,b");
+        g.AddEdge(a, b, 2);
+        Console.WriteLine("a,c");
+        g.AddEdge(a, c, 2);//
+        Console.WriteLine("b,c");
+        g.AddEdge(b, c, 2);
+        Console.WriteLine("c,b");
+        g.AddEdge(c, b, 2);
+        Console.WriteLine("e,f");
+        g.AddEdge(e, f, 2);
+        Console.WriteLine("a,f");
+        g.AddEdge(a, f, 2);
+        Console.WriteLine("f,b");
+        g.AddEdge(f, b, 2);
+        Console.WriteLine("a,b again---check if edge exists");
+        g.AddEdge(a, b, 2);
+        Console.WriteLine();
+
+        Console.WriteLine($"{g.EdgeCount}.");
+
+
+        foreach (var edge in g.Edges)
+        {
+            Console.WriteLine(edge.ToString());
+        }
+
+        Console.WriteLine("///////////////////////////////////RemoveEdge test///////////////////////////////////");
+        g.RemoveEdge(b, c);
+        g.RemoveEdge(c, b);
+
+        Console.WriteLine($"{g.EdgeCount}.");
+        foreach (var edge in g.Edges)
+        {
+            Console.WriteLine(edge.ToString());
+        }
+
+        Console.WriteLine("///////////////////////////////////RemoveAllEdge test///////////////////////////////////");
+        g.RemoveAllEdges();
+
+        Console.WriteLine($"{g.EdgeCount}.");
+        foreach (var edge in g.Edges)
+        {
+            Console.WriteLine(edge.ToString());
+        }
     }
 }

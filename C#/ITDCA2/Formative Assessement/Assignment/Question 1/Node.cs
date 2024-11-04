@@ -5,13 +5,11 @@ public class Node
     private int data;
     private int index;
     private List<Node> neighbors;
-    private List<int> weights;
 
     ///////////////////////////////////default constructor/////////////////////////////////////////
     public Node()
     {
         neighbors = new List<Node>();
-        weights = new List<int>();
     }
 
     ///////////////////////////////////value based constructor/////////////////////////////////////////
@@ -19,9 +17,7 @@ public class Node
     {
         data = value;
         neighbors = new List<Node>();
-        weights = new List<int>();
     }
-
 
     ///////////////////////////////////node based AKA copy constructor//////////////////////////////////////
     public Node(Node node)
@@ -34,18 +30,12 @@ public class Node
         {
             this.neighbors.Add(neighbor);
         }
-
-        weights = new List<int>();
-        foreach (var weight in node.Weights)
-        {
-            this.weights.Add(weight);
-        }
     }
 
     //////////////////////////////////////////ADD NEIGHBOR/////////////////////////////////////////////
     public void AddNeighbor(Node node)
     {
-        if (neighbors.Contains(node))
+        if (isNeighbor(node))
             Console.WriteLine("Node is already a neighbor.");
         else
         {
@@ -57,7 +47,7 @@ public class Node
     ////////////////////////////////////////REMOVE NEIGHBOR////////////////////////////////////////////
     public void RemoveNeighbor(Node node)
     {
-        if (neighbors.Contains(node))
+        if (isNeighbor(node))
         {
             neighbors.Remove(node);
             Console.WriteLine("Node removed as a neighbor.");
@@ -81,6 +71,13 @@ public class Node
             Console.WriteLine("All neighbors removed.");
         }
     }
+
+    ////////////////////////////////////////isNEIGHBORS////////////////////////////////////////////
+    public bool isNeighbor(Node node)
+    {
+        return neighbors.Contains(node);
+    }
+
 
     /////////////////////////////////////ToString Override////////////////////////////////////////
     public override string ToString()
@@ -119,9 +116,4 @@ public class Node
     {
         get { return neighbors; }
     }
-    public List<int> Weights
-    {
-        get { return weights; }
-    }
-
 }

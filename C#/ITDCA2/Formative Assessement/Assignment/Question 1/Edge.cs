@@ -7,7 +7,7 @@ public class Edge
     private int weight;
 
     ////////////////////////////////////////constructor//////////////////////////////////////////////
-    public Edge(Node source, Node destination, int w)
+    public Edge(Node source, Node destination, int w = 1) //1 default weight
     {
         sourceNode = source;
         destinationNode = destination;
