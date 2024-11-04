@@ -20,6 +20,7 @@ public class Graph
         else
         {
             nodes.Add(node);
+            updateIndices();
             Console.WriteLine($"Node added to the graph.");
         }
     }
@@ -30,6 +31,9 @@ public class Graph
         if (nodes.Contains(node))
         {
             nodes.Remove(node);
+            updateIndices();
+            for (int i = 0, length = nodes.Count; i < length; i++)
+                RemoveEdge(nodes[i], node);
             Console.WriteLine($"Node removed from the graph.");
         }
         else
@@ -172,6 +176,12 @@ public class Graph
     }
 
     //////////////////////////////////////////UPDATE INDICES/////////////////////////////////////////////
+    private void updateIndices()
+    {
+        int i = 0;
+        foreach (var node in nodes)
+            node.Index = i;
+    }
 
     //////////////////////////////////////////findEDGE/////////////////////////////////////////////
     public int findEdge(Edge edge)
