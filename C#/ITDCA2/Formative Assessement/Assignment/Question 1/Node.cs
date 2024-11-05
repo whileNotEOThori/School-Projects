@@ -78,7 +78,6 @@ public class Node
         return neighbors.Contains(node);
     }
 
-
     /////////////////////////////////////ToString Override////////////////////////////////////////
     public override string ToString()
     {
@@ -99,7 +98,6 @@ public class Node
         return result;
     }
 
-
     //////////////////////////////////////Getters and Setters/////////////////////////////////////////
     public int Data
     {
@@ -111,7 +109,6 @@ public class Node
         get { return index; }
         set { index = value; }
     }
-
     public List<Node> Neighbors
     {
         get { return neighbors; }

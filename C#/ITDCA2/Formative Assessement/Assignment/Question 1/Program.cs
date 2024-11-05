@@ -13,7 +13,10 @@ internal class Program
         // Console.WriteLine();
         // Edge_UnitTest();
 
-        Graph_UnitTest();
+        // Graph_UnitTest();
+        // Console.WriteLine();
+
+        Question2();
         Console.WriteLine();
     }
 
@@ -77,7 +80,7 @@ internal class Program
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////NODE TESTING/////////////////////////////////////////
+    //////////////////////////////////////Edge TESTING/////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////
     static void Edge_UnitTest()
     {
@@ -119,6 +122,9 @@ internal class Program
         }
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////Graph TESTING/////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////
     static void Graph_UnitTest()
     {
         Console.WriteLine(@"///////////////////////////////////////////////////////////////////////////////////////////
@@ -224,5 +230,44 @@ internal class Program
         // {
         //     Console.WriteLine(edge.ToString());
         // }
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////Question 2 TESTING/////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    static void Question2()
+    {
+
+        Graph graph = new Graph();
+
+        //get file name
+        Console.WriteLine("Enter file name with .txt extension");
+        Console.Write("File name: ");
+        string filename = Console.ReadLine();
+
+        //read all lines from text file
+        string[] lines = File.ReadAllLines(filename);
+
+        //extract number of nodes and number fo edges from the first 2 lines of the text file
+        int numNodes = Convert.ToInt32(lines[0]);
+        int numEdges = Convert.ToInt32(lines[1]);
+
+        //string array to store extracted source node , destination node and weight from line each line
+        string[] line;
+
+        for (int i = 2, length = lines.Length; i < length; i++)
+        {
+            line = lines[i].Split(' ');//extract data from line
+            Node sourceNode = new Node(Convert.ToInt32(line[0]));
+            Node destinationNode = new Node(Convert.ToInt32(line[1]));
+            int weight = Convert.ToInt32(line[2]);
+
+            graph.AddNode(sourceNode);
+            graph.AddNode(destinationNode);
+            graph.AddEdge(sourceNode, destinationNode, weight);
+        }
+
+        graph.getNodes();
+        graph.getEdges();
     }
 }

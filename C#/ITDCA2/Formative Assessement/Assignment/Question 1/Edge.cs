@@ -26,12 +26,10 @@ public class Edge
     {
         get { return sourceNode; }
     }
-
     public Node DestinationNode
     {
         get { return destinationNode; }
     }
-
     public int Weight
     {
         get { return weight; }

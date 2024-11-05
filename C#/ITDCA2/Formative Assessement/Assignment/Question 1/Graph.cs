@@ -15,7 +15,7 @@ public class Graph
     //////////////////////////////////////////ADD NODE/////////////////////////////////////////////
     public void AddNode(Node node)
     {
-        if (nodes.Contains(node))
+        if (findNode(node) >= 0)
             Console.WriteLine($"Node already exists in the graph.");
         else
         {
@@ -28,7 +28,7 @@ public class Graph
     //////////////////////////////////////////REMOVE NODE/////////////////////////////////////////////
     public void RemoveNode(Node node)
     {
-        if (nodes.Contains(node))
+        if (findNode(node) >= 0)
         {
             nodes.Remove(node);
             updateIndices();
@@ -57,22 +57,41 @@ public class Graph
     //////////////////////////////////////////ADD EDGE/////////////////////////////////////////////
     public void AddEdge(Node source, Node destination, int weight)
     {
+        // // check if nodes exist in graph
+        // if (nodes.Contains(source) == false && nodes.Contains(destination) == false)
+        // {
+        //     Console.WriteLine($"Both nodes do not exist in the graph.");
+        //     return;
+        // }
+        // else if (nodes.Contains(source) == true && nodes.Contains(destination) == false)
+        // {
+        //     Console.WriteLine($"Destination node does not exist in the graph.");
+        //     return;
+        // }
+        // else if (nodes.Contains(source) == false && nodes.Contains(destination) == true)
+        // {
+        //     Console.WriteLine($"Source node does not exist in the graph.");
+        //     return;
+        // }
+
         // check if nodes exist in graph
-        if (nodes.Contains(source) == false && nodes.Contains(destination) == false)
+        if (findNode(source) == -1 && findNode(destination) == -1)
         {
             Console.WriteLine($"Both nodes do not exist in the graph.");
             return;
         }
-        else if (nodes.Contains(source) == true && nodes.Contains(destination) == false)
+        else if (findNode(source) >= 0 && findNode(destination) == -1)
         {
             Console.WriteLine($"Destination node does not exist in the graph.");
             return;
         }
-        else if (nodes.Contains(source) == false && nodes.Contains(destination) == true)
+        else if (findNode(source) == -1 && findNode(destination) >= 0)
         {
             Console.WriteLine($"Source node does not exist in the graph.");
             return;
         }
+
+
 
         //create edge object
         Edge edge = new Edge(source, destination, weight);
@@ -108,17 +127,34 @@ public class Graph
     public void RemoveEdge(Node source, Node destination)
     {
         // check if nodes exist in graph
-        if (nodes.Contains(source) == false && nodes.Contains(destination) == false)
+        // if (nodes.Contains(source) == false && nodes.Contains(destination) == false)
+        // {
+        //     Console.WriteLine($"Both nodes do not exist in the graph.");
+        //     return;
+        // }
+        // else if (nodes.Contains(source) == true && nodes.Contains(destination) == false)
+        // {
+        //     Console.WriteLine($"Destination node does not exist in the graph.");
+        //     return;
+        // }
+        // else if (nodes.Contains(source) == false && nodes.Contains(destination) == true)
+        // {
+        //     Console.WriteLine($"Source node does not exist in the graph.");
+        //     return;
+        // }
+
+        // check if nodes exist in graph
+        if (findNode(source) == -1 && findNode(destination) == -1)
         {
             Console.WriteLine($"Both nodes do not exist in the graph.");
             return;
         }
-        else if (nodes.Contains(source) == true && nodes.Contains(destination) == false)
+        else if (findNode(source) >= 0 && findNode(destination) == -1)
         {
             Console.WriteLine($"Destination node does not exist in the graph.");
             return;
         }
-        else if (nodes.Contains(source) == false && nodes.Contains(destination) == true)
+        else if (findNode(source) == -1 && findNode(destination) >= 0)
         {
             Console.WriteLine($"Source node does not exist in the graph.");
             return;
@@ -180,19 +216,35 @@ public class Graph
     {
         int i = 0;
         foreach (var node in nodes)
+        {
             node.Index = i;
+            i++;
+        }
+    }
+
+    //////////////////////////////////////////findNODE/////////////////////////////////////////////
+    public int findNode(Node node)
+    {//return index in node list or -1
+        //iterate through node list to check if node exists
+        for (int i = 0, length = NodeCount; i < length; i++)
+            //compares node's attributes to each of the attributes of each node in the node list
+            if (nodes[i].Data == node.Data)
+                return i;
+        return -1;
     }
 
     //////////////////////////////////////////findEDGE/////////////////////////////////////////////
     public int findEdge(Edge edge)
     {//return index in edge list or -1
         //iterate through edge list to check if edge exists
-        for (int i = 0, length = edges.Count; i < length; i++)
+        for (int i = 0, length = EdgeCount; i < length; i++)
             //compares edge's attributes to each of the attributes of each edge in the edge list
             if ((edges[i].SourceNode == edge.SourceNode) && (edges[i].DestinationNode == edge.DestinationNode) /*&& (edges[i].Weight == edge.Weight)*/)
                 return i;
         return -1;
     }
+
+
 
     //////////////////////////////////////Getters and Setters/////////////////////////////////////////
     public List<Node> Nodes
