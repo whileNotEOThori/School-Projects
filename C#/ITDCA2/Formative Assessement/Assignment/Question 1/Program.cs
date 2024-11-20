@@ -7,17 +7,24 @@ internal class Program
         Console.WriteLine(@"///////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////Main/////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////");
-        // Console.WriteLine();
-        // Node_UnitTest();
-
-        // Console.WriteLine();
-        // Edge_UnitTest();
-
-        // Graph_UnitTest();
-        // Console.WriteLine();
-
-        Question2();
         Console.WriteLine();
+        Node_UnitTest();
+
+        Console.WriteLine();
+        Edge_UnitTest();
+
+        Graph_UnitTest();
+        Console.WriteLine();
+
+        Question_2();
+        Console.WriteLine();
+
+        Question_3();
+        Console.WriteLine();
+
+        Question_4();
+        Console.WriteLine();
+
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
@@ -222,8 +229,8 @@ internal class Program
         Console.WriteLine("///////////////////////////////////RemoveAllEdge test///////////////////////////////////");
         g.RemoveAllEdges();
 
-        g.getNodes();
-        g.getEdges();
+        g.PrintNodes();
+        g.PrintEdges();
 
         // Console.WriteLine($"{g.EdgeCount}.");
         // foreach (var edge in g.Edges)
@@ -235,39 +242,116 @@ internal class Program
     ///////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////Question 2 TESTING/////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////
-    static void Question2()
+    static void Question_2()
     {
 
         Graph graph = new Graph();
 
-        //get file name
+        // string filename = getFileName();
+        string filename = "graph.txt";
+
+        // read all lines from text file
+        graph.ReadFile(filename);
+
+        List<Node> dfs = graph.DFS();
+        List<Node> bfs = graph.BFS();
+
+        Console.WriteLine(dfs.Count);
+        Console.WriteLine(bfs.Count);
+
+        foreach (var item in dfs)
+            Console.WriteLine(item.Data);
+
+        Console.WriteLine(dfs.Count);
+
+        foreach (var item in bfs)
+            Console.WriteLine(item.ToString());
+
+        Console.WriteLine(bfs.Count);
+    }
+
+    static void Question_3()
+    {
+        Graph graph = new Graph();
+        List<Edge> MST_Kruskal = new List<Edge>();
+
+        string filename = getFileName();
+        graph.ReadFile(filename);
+
+        const int NUM_TIME_READINGS = 10;
+        DateTime[] execution_times = new DateTime[NUM_TIME_READINGS];
+        DateTime execution_start_time, execution_end_time;
+        TimeSpan execution_time;
+        string[] temp = new string[NUM_TIME_READINGS];
+
+
+        for (int i = 0; i < NUM_TIME_READINGS; i++)
+        {
+            execution_start_time = DateTime.Now;
+
+            MST_Kruskal = graph.MST_Kruskal();
+
+            execution_end_time = DateTime.Now;
+            execution_time = execution_end_time.Subtract(execution_start_time);//calculate execution time
+
+            execution_times[i] = Convert.ToDateTime(execution_time);
+            temp[i] = Convert.ToString(execution_time);
+
+
+            //display MST
+            foreach (var edge in MST_Kruskal)
+            {
+                Console.WriteLine(edge.ToString());
+            }
+        }
+
+        File.WriteAllLines("kruskal.txt", temp);
+    }
+
+    static void Question_4()
+    {
+        Graph graph = new Graph();
+        List<Edge> MST_Prim = new List<Edge>();
+
+        string filename = getFileName();
+        graph.ReadFile(filename);
+
+        const int NUM_TIME_READINGS = 10;
+        DateTime[] execution_times = new DateTime[NUM_TIME_READINGS];
+        DateTime execution_start_time, execution_end_time;
+        TimeSpan execution_time;
+        string[] temp = new string[NUM_TIME_READINGS];
+
+
+        for (int i = 0; i < NUM_TIME_READINGS; i++)
+        {
+            execution_start_time = DateTime.Now;
+
+            MST_Prim = graph.MST_Prim();
+
+            execution_end_time = DateTime.Now;
+            execution_time = execution_end_time.Subtract(execution_start_time);//calculate execution time
+
+            execution_times[i] = Convert.ToDateTime(execution_time);
+            temp[i] = Convert.ToString(execution_time);
+
+
+            //display MST
+            foreach (var edge in MST_Prim)
+            {
+                Console.WriteLine(edge.ToString());
+            }
+        }
+
+        File.WriteAllLines("prim.txt", temp);
+    }
+
+    static string getFileName()
+    {
         Console.WriteLine("Enter file name with .txt extension");
         Console.Write("File name: ");
         string filename = Console.ReadLine();
 
-        //read all lines from text file
-        string[] lines = File.ReadAllLines(filename);
-
-        //extract number of nodes and number fo edges from the first 2 lines of the text file
-        int numNodes = Convert.ToInt32(lines[0]);
-        int numEdges = Convert.ToInt32(lines[1]);
-
-        //string array to store extracted source node , destination node and weight from line each line
-        string[] line;
-
-        for (int i = 2, length = lines.Length; i < length; i++)
-        {
-            line = lines[i].Split(' ');//extract data from line
-            Node sourceNode = new Node(Convert.ToInt32(line[0]));
-            Node destinationNode = new Node(Convert.ToInt32(line[1]));
-            int weight = Convert.ToInt32(line[2]);
-
-            graph.AddNode(sourceNode);
-            graph.AddNode(destinationNode);
-            graph.AddEdge(sourceNode, destinationNode, weight);
-        }
-
-        graph.getNodes();
-        graph.getEdges();
+        return filename;
     }
 }
