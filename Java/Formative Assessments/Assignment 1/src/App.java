@@ -77,10 +77,13 @@ public class App {
         Book book1 = new Book("HTML", "Jane Doe", 100);
         Book book2 = new Book("Java", "John Doe", 50);
 
+        System.out.println(library.findBook("Java"));
+
         library.addBook(book1);
         library.addBook(book2);
 
         System.out.println(library.findBook("HTML"));
         System.out.println(library.findBook("Java"));
+        System.out.println(library.findBook("Project Management"));
     }
 }
