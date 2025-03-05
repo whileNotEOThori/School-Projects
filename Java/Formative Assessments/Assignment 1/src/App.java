@@ -5,6 +5,7 @@ public class App {
         // System.out.println("Hello, World!");
         bookTest();
         customerTest();
+        inventoryTest();
     }
 
     private static void bookTest() {
@@ -65,5 +66,21 @@ public class App {
         System.out.println("\tEmail: " + customer1.getEmail());
         System.out.println();
 
+    }
+
+    private static void inventoryTest() {
+        System.out.println("///////////////////////////////////////////////////////////////////////////////");
+        System.out.println("///////////////////////////////////INVENTORY TEST//////////////////////////////////");
+        System.out.println("///////////////////////////////////////////////////////////////////////////////");
+
+        Inventory library = new Inventory();
+        Book book1 = new Book("HTML", "Jane Doe", 100);
+        Book book2 = new Book("Java", "John Doe", 50);
+
+        library.addBook(book1);
+        library.addBook(book2);
+
+        System.out.println(library.findBook("HTML"));
+        System.out.println(library.findBook("Java"));
     }
 }
