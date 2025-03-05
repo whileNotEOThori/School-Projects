@@ -6,6 +6,7 @@ public class App {
         bookTest();
         customerTest();
         inventoryTest();
+        orderTest();
     }
 
     private static void bookTest() {
@@ -77,13 +78,41 @@ public class App {
         Book book1 = new Book("HTML", "Jane Doe", 100);
         Book book2 = new Book("Java", "John Doe", 50);
 
+        System.out.println("Search on an empty inventory list");
         System.out.println(library.findBook("Java"));
 
         library.addBook(book1);
         library.addBook(book2);
 
+        System.out.println("Search for a book that exists in a filled list");
         System.out.println(library.findBook("HTML"));
         System.out.println(library.findBook("Java"));
+
+        System.out.println("Search for a book that does not exist in a filled list");
         System.out.println(library.findBook("Project Management"));
+    }
+
+    private static void orderTest() {
+        System.out.println("///////////////////////////////////////////////////////////////////////////////");
+        System.out.println("///////////////////////////////////ORDER TEST//////////////////////////////////");
+        System.out.println("///////////////////////////////////////////////////////////////////////////////");
+
+        Customer customer = new Customer("John Doe", "jdoe@gmail.com");
+        Order textbooks = new Order(customer);
+
+        Book book1 = new Book("HTML", "Jane Doe", 100);
+        Book book2 = new Book("Java", "John Doe", 50);
+
+        textbooks.addBook(book1);
+        textbooks.addBook(book2);
+
+        System.out.println("Order details:");
+        System.out.println("\tCustomer Name: " + textbooks.getCustomer().getName());
+        System.out.println("\tNumber of books ordered: " + textbooks.getBooks().size());
+        for (int i = 0, n = textbooks.getBooks().size(); i < n; i++) {
+            System.out.println("\tBook " + (i + 1) + ": " + textbooks.getBooks().get(i).getTitle());
+        }
+        System.out.println();
+
     }
 }
