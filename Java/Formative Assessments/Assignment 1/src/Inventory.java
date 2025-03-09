@@ -14,9 +14,9 @@ public class Inventory {
         inventory.add(book);
     }
 
-    public int findBook(String title) {
+    public int findBook(String title) throws BookNotFoundException {
         if (inventory.isEmpty()) {
-            return -1;
+            throw new BookNotFoundException(title);
         }
 
         for (int i = 0, n = inventory.size(); i < n; i++) {
@@ -24,7 +24,6 @@ public class Inventory {
                 return i;
             }
         }
-
-        return -1;
+        throw new BookNotFoundException(title);
     }
 }

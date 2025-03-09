@@ -12,6 +12,11 @@ public class Order {
         books = new ArrayList<Book>();
     }
 
+    public Order(Customer c, List<Book> books) {
+        customer = c;
+        this.books = books;
+    }
+
     public void addBook(Book book) {
         books.add(book);
     }
