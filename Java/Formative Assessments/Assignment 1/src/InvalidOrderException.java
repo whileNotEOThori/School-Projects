@@ -1,7 +1,7 @@
 
 public class InvalidOrderException extends Exception {
 
-    public InvalidOrderException(String message) {
-        super(message);
+    public InvalidOrderException() {
+        super("Error processing order: Invalid order - Order must contain at least one book.");
     }
 }

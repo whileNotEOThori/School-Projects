@@ -4,7 +4,7 @@ public class Book {
     private String title, author;
     private double price;
 
-     public Book(String t, String a, double p) {
+    public Book(String t, String a, double p) {
         title = t;
         author = a;
         price = p;

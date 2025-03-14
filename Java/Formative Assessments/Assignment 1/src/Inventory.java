@@ -16,7 +16,7 @@ public class Inventory {
 
     public Book findBook(String title) throws BookNotFoundException {
         for (int i = 0, n = inventory.size(); i < n; i++) {
-            if (inventory.get(i).getTitle() == title) {
+            if (inventory.get(i).getTitle().equals(title)) {
                 return inventory.get(i);
             }
         }
