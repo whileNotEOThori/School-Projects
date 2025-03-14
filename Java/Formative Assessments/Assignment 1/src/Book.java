@@ -1,6 +1,5 @@
-
 public class Book {
-
+    
     private String title, author;
     private double price;
 

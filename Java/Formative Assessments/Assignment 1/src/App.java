@@ -1,13 +1,14 @@
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class App {
 
     public static Scanner scanner = new Scanner(System.in);
     public static Inventory bookstore = new Inventory(); //CREATE BOOKSTORE
+    private static final Logger logger = Logger.getLogger(App.class.getName());
 
     public static void main(String[] args) throws Exception, BookNotFoundException {
         System.out.println("_______________________________");
@@ -55,19 +56,19 @@ public class App {
         try {
             processOrder(order1);
         } catch (InvalidOrderException e) {
-            System.out.println(e.getMessage());
+            logger.log(Level.WARNING, e.getMessage());
         }
 
         try {
             processOrder(order2);
         } catch (InvalidOrderException e) {
-            System.out.println(e.getMessage());
+            logger.log(Level.WARNING, e.getMessage());
         }
 
         try {
             processOrder(order3);
         } catch (InvalidOrderException e) {
-            System.out.println(e.getMessage());
+            logger.log(Level.WARNING, e.getMessage());
         }
     }
 
@@ -87,7 +88,7 @@ public class App {
         try {
             order.addBook(bookstore.findBook(book.getTitle()));
         } catch (BookNotFoundException e) {
-            System.out.println(e.getMessage());
+            logger.log(Level.WARNING, e.getMessage());
         }
     }
 
@@ -111,8 +112,3 @@ public class App {
     }
 
 }
-/*
-         create menu for displaying all books
- *c
-ode createOrder 
- */
