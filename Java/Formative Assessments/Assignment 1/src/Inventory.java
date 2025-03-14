@@ -14,16 +14,16 @@ public class Inventory {
         inventory.add(book);
     }
 
-    public int findBook(String title) throws BookNotFoundException {
-        if (inventory.isEmpty()) {
-            throw new BookNotFoundException(title);
-        }
-
+    public Book findBook(String title) throws BookNotFoundException {
         for (int i = 0, n = inventory.size(); i < n; i++) {
             if (inventory.get(i).getTitle() == title) {
-                return i;
+                return inventory.get(i);
             }
         }
         throw new BookNotFoundException(title);
+    }
+
+    public List<Book> getInventory() {
+        return inventory;
     }
 }
